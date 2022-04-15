@@ -1,5 +1,3 @@
-import 'package:_rushb/app/passenger/views/passengerView.dart';
-import 'package:_rushb/app/qrCodeScanner/views/qrCodeScanner.dart';
 import 'package:flutter/material.dart';
 
 import 'app/login/views/login.dart';

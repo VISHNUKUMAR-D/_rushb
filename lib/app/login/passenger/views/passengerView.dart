@@ -1,14 +1,13 @@
 import 'package:_rushb/app/decorativeWidgets/decorativeWidget.dart';
-import 'package:_rushb/app/login/views/NavigationDrawerWidget/NavigationDrawerWidget.dart';
-import 'package:_rushb/app/mybus/views/mybus.dart';
-import 'package:_rushb/app/qrCodeScanner/views/qrCodeScanner.dart';
-import 'package:_rushb/app/tickets/views/tickets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import '../../map/views/map.dart';
-import '../../search/views/searchBus.dart';
+import '../map/views/map.dart';
+import '../mybus/views/mybus.dart';
+import '../qrCodeScanner/qrCodeScanner.dart';
+import '../search/views/searchBus.dart';
+import '../tickets/views/tickets.dart';
 
 class passengerView extends StatefulWidget {
   const passengerView({Key? key}) : super(key: key);
@@ -101,6 +100,24 @@ class _passengerViewState extends State<passengerView> {
               padding: padding,
               child: Column(
                 children: [
+                  SizedBox(
+                    height: sizedBoxHeight * 2.5,
+                  ),
+                  builtMenuItem(
+                      text: "Scan QR Code",
+                      icon: MdiIcons.qrcodeScan,
+                      size: size,
+                      onClicked: () {
+                        Navigator.pop(context);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => qrCodeScanner()));
+                      }),
+                  Divider(
+                    thickness: sizedBoxHeight / 4,
+                    color: customWidget.getAppColor(),
+                  ),
                   SizedBox(
                     height: sizedBoxHeight * 2.5,
                   ),

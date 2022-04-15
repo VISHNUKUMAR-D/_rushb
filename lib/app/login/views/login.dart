@@ -1,10 +1,9 @@
 import 'package:_rushb/app/decorativeWidgets/decorativeWidget.dart';
-import 'package:_rushb/app/passenger/views/passengerView.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../controller/login_controller.dart';
+import '../passenger/views/passengerView.dart';
 
 class loginView extends GetView<LoginController> {
   decorativeWidget customWidget = decorativeWidget();

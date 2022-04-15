@@ -1,13 +1,15 @@
+import 'package:_rushb/app/decorativeWidgets/decorativeWidget.dart';
+import 'package:_rushb/app/passenger/views/passengerView.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../controller/login_controller.dart';
 
 class loginView extends GetView<LoginController> {
+  decorativeWidget customWidget = decorativeWidget();
   @override
   Widget build(BuildContext context) {
-    Offset distance = const Offset(5, 5);
-    double blur = 15.0;
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Column(
@@ -28,7 +30,7 @@ class loginView extends GetView<LoginController> {
               height: size.height * 0.60,
               width: double.infinity,
               decoration: BoxDecoration(
-                color: Colors.greenAccent,
+                color: customWidget.getAppColor(),
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(size.height * 0.04),
                     topRight: Radius.circular(size.height * 0.04)),
@@ -37,14 +39,8 @@ class loginView extends GetView<LoginController> {
                 children: [
                   Padding(
                     padding: EdgeInsets.all(size.height * 0.05),
-                    child: Text(
-                      "PICK YOUR BUS !",
-                      style: GoogleFonts.lexend(
-                        fontSize: size.width * 0.075,
-                        fontWeight: FontWeight.w700,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
+                    child: customWidget.putTitleText(
+                        "PICK YOUR BUS !", size.width * 0.075, 0),
                   ),
                   SizedBox(
                     height: size.height * 0.1,
@@ -55,24 +51,31 @@ class loginView extends GetView<LoginController> {
                       Container(
                         width: size.height * 0.15,
                         height: size.height * 0.15,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          borderRadius:
+                              BorderRadius.all(const Radius.circular(20)),
                         ),
                         child: MaterialButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => new passengerView()));
+                          },
                           child: Center(
                             child: Column(
                               children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 10),
+                                const Padding(
+                                  padding: EdgeInsets.only(top: 10),
                                   child: Image(
                                       image: AssetImage(
                                           "assets/Person-Image2.jpg"),
                                       width: double.infinity,
                                       fit: BoxFit.fitWidth),
                                 ),
-                                Text("Passenger")
+                                customWidget.putTitleText(
+                                    "PASSENGER", size.width * 0.03, 1)
                               ],
                             ),
                           ),
@@ -81,9 +84,10 @@ class loginView extends GetView<LoginController> {
                       Container(
                         width: size.height * 0.15,
                         height: size.height * 0.15,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(20)),
                         ),
                         child: MaterialButton(
                           onPressed: () {},
@@ -95,13 +99,14 @@ class loginView extends GetView<LoginController> {
                                   child: Padding(
                                     padding: const EdgeInsets.only(top: 10),
                                     child: Image(
-                                        image: AssetImage(
+                                        image: const AssetImage(
                                             "assets/Conductor-Image2.jpg"),
                                         width: size.height * 0.08,
                                         fit: BoxFit.fitWidth),
                                   ),
                                 ),
-                                Text("Conductor")
+                                customWidget.putTitleText(
+                                    "CONDUCTOR", size.width * 0.03, 1)
                               ],
                             ),
                           ),

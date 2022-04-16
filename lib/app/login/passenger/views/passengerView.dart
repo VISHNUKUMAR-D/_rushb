@@ -181,14 +181,18 @@ class _passengerViewState extends State<passengerView> {
                     height: sizedBoxHeight * 2.5,
                   ),
                   builtMenuItem(
-                      text: "Languages", icon: MdiIcons.translate, size: size),
+                      text: "Languages",
+                      icon: MdiIcons.translate,
+                      size: size,
+                      onClicked: () {}),
                   SizedBox(
                     height: sizedBoxHeight,
                   ),
                   builtMenuItem(
                       text: "Settings",
                       icon: Icons.settings_outlined,
-                      size: size),
+                      size: size,
+                      onClicked: () {}),
                   SizedBox(
                     height: sizedBoxHeight * 2.5,
                   ),
@@ -202,14 +206,16 @@ class _passengerViewState extends State<passengerView> {
                   builtMenuItem(
                       text: "Share with Friends",
                       icon: MdiIcons.share,
-                      size: size),
+                      size: size,
+                      onClicked: () {}),
                   SizedBox(
                     height: sizedBoxHeight,
                   ),
                   builtMenuItem(
                       text: "Help & FAQ",
                       icon: MdiIcons.helpCircleOutline,
-                      size: size),
+                      size: size,
+                      onClicked: () {}),
                   SizedBox(
                     height: sizedBoxHeight * 2.5,
                   ),
@@ -220,14 +226,17 @@ class _passengerViewState extends State<passengerView> {
                   SizedBox(
                     height: sizedBoxHeight * 2.5,
                   ),
-                  ListTile(
-                    leading: Icon(
-                      MdiIcons.logout,
-                      color: Colors.redAccent,
+                  Material(
+                    color: Colors.transparent,
+                    child: ListTile(
+                      leading: Icon(
+                        MdiIcons.logout,
+                        color: Colors.redAccent,
+                      ),
+                      title: customWidget.putLabelText(
+                          "Log Out", size.height * 0.02, 1),
+                      onTap: () {},
                     ),
-                    title: customWidget.putTitleText(
-                        "Log Out", size.height * 0.02, 1),
-                    onTap: () {},
                   ),
                 ],
               ),
@@ -264,12 +273,12 @@ class _passengerViewState extends State<passengerView> {
                   top: BorderSide(
                       width: size.width * 0.0075,
                       color: customWidget.getAppColor()),
-                ),
-                gradient: LinearGradient(colors: [
-                  customWidget.getAppColor().withOpacity(1),
-                  customWidget.getAppColor().withOpacity(0.5),
-                  customWidget.getAppColor().withOpacity(0.015),
-                ], begin: Alignment.bottomCenter, end: Alignment.topCenter))
+                ))
+            // gradient: LinearGradient(colors: [
+            //   customWidget.getAppColor().withOpacity(1),
+            //   customWidget.getAppColor().withOpacity(0.5),
+            //   customWidget.getAppColor().withOpacity(0.015),
+            // ], begin: Alignment.bottomCenter, end: Alignment.topCenter))
             : BoxDecoration(
                 boxShadow: [
                   BoxShadow(
@@ -295,7 +304,7 @@ class _passengerViewState extends State<passengerView> {
             if (isActive)
               Flexible(
                 child:
-                    customWidget.putLabelText(label, size.height * 0.0125, 1),
+                    customWidget.putTitleText(label, size.height * 0.0125, 1),
               )
           ],
         ),
@@ -313,14 +322,17 @@ class _passengerViewState extends State<passengerView> {
     VoidCallback? onClicked,
   }) {
     final color = customWidget.getAppColor();
-    return ListTile(
-      hoverColor: color,
-      leading: Icon(
-        icon,
-        color: color,
+    return Material(
+      color: Colors.transparent,
+      child: ListTile(
+        hoverColor: color,
+        leading: Icon(
+          icon,
+          color: color,
+        ),
+        title: customWidget.putLabelText(text, size.height * 0.02, 1),
+        onTap: onClicked,
       ),
-      title: customWidget.putTitleText(text, size.height * 0.02, 1),
-      onTap: onClicked,
     );
   }
 }

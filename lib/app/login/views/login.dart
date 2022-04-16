@@ -39,7 +39,7 @@ class loginView extends GetView<LoginController> {
                   Padding(
                     padding: EdgeInsets.all(size.height * 0.05),
                     child: customWidget.putTitleText(
-                        "PICK YOUR BUS !", size.width * 0.075, 0),
+                        "PICK YOUR BUS !", size.width * 0.06, 0),
                   ),
                   SizedBox(
                     height: size.height * 0.1,
@@ -50,12 +50,18 @@ class loginView extends GetView<LoginController> {
                       Container(
                         width: size.height * 0.15,
                         height: size.height * 0.15,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius:
-                              BorderRadius.all(const Radius.circular(20)),
+                          borderRadius: BorderRadius.all(
+                              Radius.circular(size.width * 0.05)),
                         ),
                         child: MaterialButton(
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.circular(size.width * 0.05)),
+                          hoverColor: customWidget.getAppColor(),
+                          elevation: 0,
+                          splashColor: Colors.greenAccent,
                           onPressed: () {
                             Navigator.pushReplacement(
                                 context,
@@ -64,17 +70,18 @@ class loginView extends GetView<LoginController> {
                           },
                           child: Center(
                             child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                const Padding(
-                                  padding: EdgeInsets.only(top: 10),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 10),
                                   child: Image(
-                                      image: AssetImage(
-                                          "assets/Person-Image2.jpg"),
-                                      width: double.infinity,
+                                      image: const AssetImage(
+                                          "assets/Passenger.png"),
+                                      width: size.height * 0.08,
                                       fit: BoxFit.fitWidth),
                                 ),
                                 customWidget.putTitleText(
-                                    "PASSENGER", size.width * 0.03, 1)
+                                    "Passenger", size.width * 0.03, 1)
                               ],
                             ),
                           ),
@@ -83,29 +90,33 @@ class loginView extends GetView<LoginController> {
                       Container(
                         width: size.height * 0.15,
                         height: size.height * 0.15,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(20)),
+                          borderRadius: BorderRadius.all(
+                              Radius.circular(size.width * 0.05)),
                         ),
                         child: MaterialButton(
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                                  BorderRadius.circular(size.width * 0.05)),
+                          hoverColor: customWidget.getAppColor(),
+                          elevation: 0,
+                          splashColor: Colors.greenAccent,
                           onPressed: () {},
                           child: Center(
                             child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Container(
-                                  height: size.height * 0.125,
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(top: 10),
-                                    child: Image(
-                                        image: const AssetImage(
-                                            "assets/Conductor-Image2.jpg"),
-                                        width: size.height * 0.08,
-                                        fit: BoxFit.fitWidth),
-                                  ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 10),
+                                  child: Image(
+                                      image: const AssetImage(
+                                          "assets/Conductor.png"),
+                                      width: size.height * 0.06,
+                                      fit: BoxFit.fitWidth),
                                 ),
                                 customWidget.putTitleText(
-                                    "CONDUCTOR", size.width * 0.03, 1)
+                                    "Conductor", size.width * 0.03, 1)
                               ],
                             ),
                           ),

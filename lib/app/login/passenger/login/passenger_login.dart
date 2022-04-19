@@ -35,7 +35,10 @@ class _LoginPageState extends State<LoginPage> {
                   margin: const EdgeInsets.only(left: 20, right: 20, top: 30),
                   child: Column(
                     children: <Widget>[
-                      _textInput(hint: "Email", icon: Icons.email),
+                      _textInput(
+                        hint: "Email",
+                        icon: Icons.email,
+                      ),
                       _textInput(hint: "Password", icon: Icons.vpn_key),
                       Container(
                           alignment: Alignment.centerRight,

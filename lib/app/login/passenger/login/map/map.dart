@@ -26,7 +26,6 @@ class _mapState extends State<map> {
   }
 
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: GoogleMap(
         markers: markers,

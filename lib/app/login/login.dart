@@ -1,6 +1,5 @@
 import 'package:_rushb/app/decorativeWidgets/decorativeWidget.dart';
 import 'package:_rushb/app/login/passenger/login/passenger_login.dart';
-import 'package:_rushb/app/login/passenger/passengerView.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 

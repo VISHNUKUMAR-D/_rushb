@@ -1,11 +1,17 @@
 import 'package:_rushb/app/decorativeWidgets/decorativeWidget.dart';
+import 'package:_rushb/app/login/passenger/login/passenger_login.dart';
+import 'package:_rushb/app/login/passenger/passengerView.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:get/get.dart';
-import '../controller/login_controller.dart';
-import '../passenger/views/passengerView.dart';
 
-class loginView extends GetView<LoginController> {
+class loginView extends StatefulWidget {
+  const loginView({Key? key}) : super(key: key);
+
+  @override
+  _loginViewState createState() => _loginViewState();
+}
+
+class _loginViewState extends State<loginView> {
   decorativeWidget customWidget = decorativeWidget();
   @override
   Widget build(BuildContext context) {
@@ -66,7 +72,7 @@ class loginView extends GetView<LoginController> {
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => new passengerView()));
+                                    builder: (context) => new LoginPage()));
                           },
                           child: Center(
                             child: Column(

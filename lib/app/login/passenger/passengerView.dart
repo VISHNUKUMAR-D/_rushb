@@ -1,13 +1,14 @@
 import 'package:_rushb/app/decorativeWidgets/decorativeWidget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import '../map/views/map.dart';
-import '../mybus/views/mybus.dart';
-import '../qrCodeScanner/qrCodeScanner.dart';
-import '../search/views/searchBus.dart';
-import '../tickets/views/tickets.dart';
+import 'map/map.dart';
+import 'mybus/mybus.dart';
+import 'qrCodeScanner/qrCodeScanner.dart';
+import 'search/searchBus.dart';
+import 'tickets/tickets.dart';
 
 class passengerView extends StatefulWidget {
   const passengerView({Key? key}) : super(key: key);
@@ -20,7 +21,13 @@ var drawerKey = GlobalKey<ScaffoldState>();
 class _passengerViewState extends State<passengerView> {
   decorativeWidget customWidget = decorativeWidget();
   int activeTab = 0;
-  List<StatefulWidget> navBarTabs = [map(), searchBus(), mybus(), tickets()];
+  bool searchBusBy = true;
+  List<StatefulWidget> navBarTabs = [
+    const map(),
+    const searchBus(),
+    const mybus(),
+    const tickets()
+  ];
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -29,27 +36,137 @@ class _passengerViewState extends State<passengerView> {
     return Scaffold(
         key: drawerKey,
         drawer: buildDrawer(padding, sizedBoxHeight, size, context),
-        appBar: AppBar(
-          backgroundColor: customWidget.getAppColor(),
-          foregroundColor: Colors.white,
-          leading: IconButton(
-            iconSize: size.height * 0.05,
-            icon: Icon(MdiIcons.accountCircle),
-            onPressed: () {
-              drawerKey.currentState?.openDrawer();
-            },
-          ),
-          actions: [
-            IconButton(
-                iconSize: size.height * 0.04,
-                padding: EdgeInsets.only(right: size.width * 0.04),
-                icon: Icon(MdiIcons.qrcodeScan),
-                onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => new qrCodeScanner())))
-          ],
-        ),
+        appBar: (activeTab != 1)
+            ? AppBar(
+                backgroundColor: customWidget.getAppColor(),
+                foregroundColor: Colors.white,
+                leading: IconButton(
+                  iconSize: size.height * 0.05,
+                  icon: const Icon(MdiIcons.accountCircle),
+                  onPressed: () {
+                    drawerKey.currentState?.openDrawer();
+                  },
+                ),
+                actions: [
+                  IconButton(
+                      iconSize: size.height * 0.04,
+                      padding: EdgeInsets.only(right: size.width * 0.04),
+                      icon: const Icon(MdiIcons.qrcodeScan),
+                      onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const qrCodeScanner())))
+                ],
+              )
+            : AppBar(
+                elevation: size.width * 0.015,
+
+                backgroundColor: customWidget.getAppColor(),
+                toolbarHeight: size.height * 0.175,
+                leading: const Text(""),
+                flexibleSpace: SafeArea(
+                  child: Padding(
+                    padding: EdgeInsets.all(size.height * 0.0075),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius:
+                              BorderRadius.circular(size.width * 0.015),
+                          border: Border.all(color: Colors.white)),
+                      height: size.height * 0.15,
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Container(
+                                  width: size.width * 0.6,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      const Icon(
+                                        MdiIcons.busStop,
+                                        color: Colors.white,
+                                      ),
+                                      Container(
+                                        alignment: Alignment.center,
+                                        width: size.width * 0.5,
+                                        child: TextField(
+                                          cursorWidth: size.width * 0.0075,
+                                          cursorColor: Colors.white,
+                                          style: GoogleFonts.lexend(
+                                              color: Colors.white),
+                                          decoration: InputDecoration(
+                                              hintText: (searchBusBy)
+                                                  ? "   Enter Your Location"
+                                                  : "   Enter Bus Number",
+                                              hintStyle: const TextStyle(
+                                                  color: Colors.white54),
+                                              enabled: true,
+                                              border: InputBorder.none),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: size.width * 0.65,
+                                  child: Divider(
+                                    thickness: sizedBoxHeight / 4,
+                                    color: Colors.white54,
+                                  ),
+                                ),
+                                Container(
+                                  width: size.width * 0.6,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      const Icon(
+                                        Icons.location_pin,
+                                        color: Colors.white,
+                                      ),
+                                      Container(
+                                        alignment: Alignment.center,
+                                        width: size.width * 0.5,
+                                        child: TextField(
+                                          cursorWidth: size.width * 0.0075,
+                                          cursorColor: Colors.white,
+                                          style: GoogleFonts.lexend(
+                                              color: Colors.white),
+                                          decoration: const InputDecoration(
+                                              hintText:
+                                                  "   Enter Your Desitination",
+                                              hintStyle: TextStyle(
+                                                  color: Colors.white54),
+                                              enabled: true,
+                                              border: InputBorder.none),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                // customWidget.buildSearchField(
+                                //     "Your Loaction", MdiIcons.busStop),
+                                // customWidget.buildSearchField(
+                                //     "Enter Destination", MdiIcons.busStop)
+                              ],
+                            ),
+                            Icon(Icons.swap_vert_outlined,
+                                color: Colors.white, size: size.width * 0.075)
+                          ]),
+                    ),
+                  ),
+                ),
+                // bottom: PreferredSize(
+                //   preferredSize: Size.fromHeight(size.height * 0.08),
+                //   child: Container(
+                //     child: customWidget.buildSearchField(
+                //         "Enter Destination", Icons.location_pin),
+                //   ),
+                // ),
+              ),
         body: Container(
           color: Colors.white,
           child: navBarTabs[activeTab],
@@ -89,7 +206,7 @@ class _passengerViewState extends State<passengerView> {
                     children: [
                       customWidget.putTitleText("RushB", size.height * 0.03, 0),
                       customWidget.putLabelText(
-                          "rusb@massivemodulerz.in", size.height * 0.015, 0)
+                          "rushb@massivemodulerz.in", size.height * 0.015, 0)
                     ],
                   )
                 ],
@@ -112,7 +229,7 @@ class _passengerViewState extends State<passengerView> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => qrCodeScanner()));
+                                builder: (context) => const qrCodeScanner()));
                       }),
                   Divider(
                     thickness: sizedBoxHeight / 4,
@@ -229,7 +346,7 @@ class _passengerViewState extends State<passengerView> {
                   Material(
                     color: Colors.transparent,
                     child: ListTile(
-                      leading: Icon(
+                      leading: const Icon(
                         MdiIcons.logout,
                         color: Colors.redAccent,
                       ),
@@ -336,3 +453,56 @@ class _passengerViewState extends State<passengerView> {
     );
   }
 }
+
+// Row(
+//                             mainAxisAlignment: MainAxisAlignment.spaceAround,
+//                             children: [
+//                               GestureDetector(
+//                                 onTap: () {
+//                                   setState(() {
+//                                     searchBusBy = true;
+//                                   });
+//                                 },
+//                                 child: Container(
+//                                   alignment: Alignment.center,
+//                                   height: size.height * 0.03,
+//                                   width: size.width * 0.3,
+//                                   decoration: searchBusBy
+//                                       ? const BoxDecoration(
+//                                           border: Border(
+//                                               bottom: BorderSide(
+//                                                   color: Colors.white)))
+//                                       : null,
+//                                   child: customWidget.putTitleText(
+//                                       "Search by Location",
+//                                       size.width * 0.03,
+//                                       0),
+//                                 ),
+//                               ),
+//                               GestureDetector(
+//                                 onTap: () {
+//                                   setState(() {
+//                                     searchBusBy = false;
+//                                   });
+//                                 },
+//                                 child: Container(
+//                                   alignment: Alignment.center,
+//                                   height: size.height * 0.03,
+//                                   width: size.width * 0.4,
+//                                   decoration: !searchBusBy
+//                                       ? const BoxDecoration(
+//                                           border: Border(
+//                                               bottom: BorderSide(
+//                                                   color: Colors.white)))
+//                                       : null,
+//                                   child: customWidget.putTitleText(
+//                                       "Search by Bus Number",
+//                                       size.width * 0.03,
+//                                       0),
+//                                 ),
+//                               )
+//                             ],
+//                           ),
+//                           SizedBox(
+//                             height: size.width * 0.025,
+//                           ),

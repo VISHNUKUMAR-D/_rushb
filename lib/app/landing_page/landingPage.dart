@@ -1,16 +1,17 @@
 import 'package:_rushb/app/decorativeWidgets/decorativeWidget.dart';
-import 'package:_rushb/app/login/passenger/login/passenger_login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-class loginView extends StatefulWidget {
-  const loginView({Key? key}) : super(key: key);
+import 'passenger/login/passenger_login.dart';
+
+class landingPage extends StatefulWidget {
+  const landingPage({Key? key}) : super(key: key);
 
   @override
-  _loginViewState createState() => _loginViewState();
+  _landingPageState createState() => _landingPageState();
 }
 
-class _loginViewState extends State<loginView> {
+class _landingPageState extends State<landingPage> {
   decorativeWidget customWidget = decorativeWidget();
   @override
   Widget build(BuildContext context) {

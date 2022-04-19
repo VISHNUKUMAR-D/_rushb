@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import 'map/map.dart';
-import 'mybus/mybus.dart';
-import 'qrCodeScanner/qrCodeScanner.dart';
-import 'search/searchBus.dart';
-import 'tickets/tickets.dart';
+import 'login/map/map.dart';
+import 'login/mybus/mybus.dart';
+import 'login/qrCodeScanner/qrCodeScanner.dart';
+import 'login/search/searchBus.dart';
+import 'login/tickets/tickets.dart';
 
 class passengerView extends StatefulWidget {
   const passengerView({Key? key}) : super(key: key);

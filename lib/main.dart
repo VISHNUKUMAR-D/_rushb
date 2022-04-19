@@ -1,6 +1,5 @@
+import 'package:_rushb/app/landing_page/landingPage.dart';
 import 'package:flutter/material.dart';
-
-import 'app/login/login.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -12,6 +11,6 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return loginView();
+    return landingPage();
   }
 }

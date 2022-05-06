@@ -1,8 +1,7 @@
 import 'package:_rushb/app/decorativeWidgets/decorativeWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-
-import 'passenger/login/passenger_login.dart';
+import 'passenger/login/passengerLoginPage.dart';
 
 class landingPage extends StatefulWidget {
   const landingPage({Key? key}) : super(key: key);
@@ -72,7 +71,8 @@ class _landingPageState extends State<landingPage> {
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => new LoginPage()));
+                                    builder: (context) =>
+                                        new pasengerLoginPage()));
                           },
                           child: Center(
                             child: Column(

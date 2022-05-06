@@ -21,19 +21,19 @@ class _searchBusState extends State<searchBus> {
         SizedBox(
           height: size.height * 0.015,
         ),
-        searchedBus(size, Colors.redAccent),
+        searchedBus(size, Colors.redAccent.shade400),
         SizedBox(
           height: size.height * 0.015,
         ),
-        searchedBus(size, Colors.yellowAccent),
+        searchedBus(size, Colors.yellowAccent.shade700),
         SizedBox(
           height: size.height * 0.015,
         ),
-        searchedBus(size, Colors.greenAccent),
+        searchedBus(size, Colors.greenAccent.shade400),
         SizedBox(
           height: size.height * 0.015,
         ),
-        searchedBus(size, Colors.yellowAccent),
+        searchedBus(size, Colors.yellowAccent.shade700),
       ],
     ));
   }
@@ -43,7 +43,8 @@ class _searchBusState extends State<searchBus> {
       alignment: Alignment.center,
       child: Card(
         color: Colors.white,
-        elevation: size.width * 0.015,
+        shadowColor: Color(0xffc0c0c0c0),
+        elevation: size.width * 0.0125,
         child: Container(
           width: size.width * 0.95,
           height: size.height * 0.175,
@@ -71,7 +72,7 @@ class _searchBusState extends State<searchBus> {
                       ),
                     ),
                     customWidget.putLabelText(
-                        "Will arrive GCT in 10mins", size.width * 0.05, 1),
+                        "Will arrive GCT in 10mins", size.width * 0.045, 1),
                     customWidget.putLabelText(
                         "Marudhamalai --> Gandhipuram", size.width * 0.03, 1),
                   ],
@@ -86,6 +87,7 @@ class _searchBusState extends State<searchBus> {
                   ),
                   SizedBox(height: size.width * 0.075),
                   SpinKitRing(
+                    lineWidth: size.width * 0.01,
                     size: size.width * 0.075,
                     color: color,
                   )

@@ -30,6 +30,7 @@ class _mapState extends State<map> {
       body: GoogleMap(
         markers: markers,
         myLocationEnabled: true,
+        myLocationButtonEnabled: true,
         zoomControlsEnabled: true,
         initialCameraPosition: _intialCameraPosition,
         onMapCreated: (controller) => _googleMapController = controller,

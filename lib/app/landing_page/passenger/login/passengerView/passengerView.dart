@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-import 'login/map/map.dart';
-import 'login/mybus/mybus.dart';
-import 'login/qrCodeScanner/qrCodeScanner.dart';
-import 'login/search/searchBus.dart';
-import 'login/tickets/tickets.dart';
+import 'map/map.dart';
+import 'search/searchBus.dart';
+import 'mybus/mybus.dart';
+import 'qrCodeScanner/qrCodeScanner.dart';
+import 'tickets/tickets.dart';
 
 class passengerView extends StatefulWidget {
   const passengerView({Key? key}) : super(key: key);
@@ -93,15 +93,18 @@ class _passengerViewState extends State<passengerView> {
                                         alignment: Alignment.center,
                                         width: size.width * 0.5,
                                         child: TextField(
-                                          cursorWidth: size.width * 0.0075,
-                                          cursorColor: Colors.white,
+                                          cursorColor: Colors.white24,
+                                          autofocus: true,
                                           style: GoogleFonts.lexend(
                                               color: Colors.white),
                                           decoration: InputDecoration(
+                                              contentPadding: EdgeInsets.only(
+                                                  left: size.width * 0.05),
                                               hintText: (searchBusBy)
-                                                  ? "   Enter Your Location"
-                                                  : "   Enter Bus Number",
-                                              hintStyle: const TextStyle(
+                                                  ? "Enter Your Location"
+                                                  : "Enter Bus Number",
+                                              hintStyle: TextStyle(
+                                                  fontSize: size.width * 0.04,
                                                   color: Colors.white54),
                                               enabled: true,
                                               border: InputBorder.none),
@@ -135,10 +138,12 @@ class _passengerViewState extends State<passengerView> {
                                           cursorColor: Colors.white,
                                           style: GoogleFonts.lexend(
                                               color: Colors.white),
-                                          decoration: const InputDecoration(
-                                              hintText:
-                                                  "   Enter Your Desitination",
+                                          decoration: InputDecoration(
+                                              contentPadding: EdgeInsets.only(
+                                                  left: size.width * 0.05),
+                                              hintText: "Enter Desitination",
                                               hintStyle: TextStyle(
+                                                  fontSize: size.width * 0.04,
                                                   color: Colors.white54),
                                               enabled: true,
                                               border: InputBorder.none),

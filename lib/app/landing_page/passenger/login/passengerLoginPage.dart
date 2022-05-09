@@ -112,22 +112,32 @@ class _pasengerLoginPageState extends State<pasengerLoginPage> {
     ];
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: Container(
-          padding: EdgeInsets.only(bottom: 20),
-          color: Colors.white,
-          child: Column(children: <Widget>[
-            Container(
-                height: MediaQuery.of(context).size.height * 0.42,
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(colors: [
-                      customWidget.getAppColor(),
-                      Colors.greenAccent
-                    ], end: Alignment.bottomCenter, begin: Alignment.topCenter),
-                    borderRadius:
-                        BorderRadius.only(bottomLeft: Radius.circular(90))),
-                child: Center(child: Image.asset("assets/Bus Stop-pana.png"))),
-            scaffoldBody[index],
-          ])),
+      body: SingleChildScrollView(
+        reverse: true,
+        child: Container(
+            padding: EdgeInsets.only(bottom: 20),
+            color: Colors.white,
+            child: Column(children: <Widget>[
+              Container(
+                  height: MediaQuery.of(context).size.height * 0.42,
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          colors: [
+                            customWidget.getAppColor(),
+                            Colors.greenAccent
+                          ],
+                          end: Alignment.bottomCenter,
+                          begin: Alignment.topCenter),
+                      borderRadius:
+                          BorderRadius.only(bottomLeft: Radius.circular(90))),
+                  child:
+                      Center(child: Image.asset("assets/Bus Stop-pana.png"))),
+              scaffoldBody[index],
+              Padding(
+                  padding: EdgeInsets.only(
+                      bottom: MediaQuery.of(context).viewInsets.bottom))
+            ])),
+      ),
     );
   }
 
@@ -186,9 +196,9 @@ class _pasengerLoginPageState extends State<pasengerLoginPage> {
                     MaterialPageRoute(builder: (context) => passengerView()));
               },
               child: Padding(
-                padding: EdgeInsets.only(bottom: size.width * 0.05),
+                padding: EdgeInsets.only(bottom: size.width * 0.0225),
                 child: customWidget.putLabelText(
-                    "Continue without login", size.height * 0.0225, 2),
+                    "Continue without login", size.height * 0.02, 2),
               ),
             ),
           ],
@@ -210,6 +220,7 @@ class _pasengerLoginPageState extends State<pasengerLoginPage> {
         color: Colors.white,
       ),
       child: InternationalPhoneNumberInput(
+        spaceBetweenSelectorAndTextField: 0,
         onInputChanged: (PhoneNumber number) {
           countryCode = number.dialCode!;
         },
@@ -218,17 +229,21 @@ class _pasengerLoginPageState extends State<pasengerLoginPage> {
         ),
         ignoreBlank: false,
         autoValidateMode: AutovalidateMode.disabled,
-        selectorTextStyle:
-            GoogleFonts.lexend(color: customWidget.getAppColor()),
+        selectorTextStyle: GoogleFonts.lexend(
+            color: customWidget.getAppColor(), fontSize: size.height * 0.02),
         initialValue: number,
         textFieldController: phoneNumberController,
         formatInput: false,
+        textStyle: GoogleFonts.lexend(
+            letterSpacing: size.width * 0.0065, fontSize: size.height * 0.02),
+        maxLength: 10,
         keyboardType: TextInputType.phone,
         inputBorder: OutlineInputBorder(),
         inputDecoration: InputDecoration(
           border: InputBorder.none,
           hintText: 'Phone Number',
-          hintStyle: GoogleFonts.lexend(color: customWidget.getAppColor()),
+          hintStyle: GoogleFonts.lexend(
+              letterSpacing: 0, color: customWidget.getAppColor()),
         ),
         cursorColor: customWidget.getAppColor(),
       ),

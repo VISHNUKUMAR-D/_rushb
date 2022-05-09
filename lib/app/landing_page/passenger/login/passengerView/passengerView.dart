@@ -22,6 +22,7 @@ class _passengerViewState extends State<passengerView> {
   decorativeWidget customWidget = decorativeWidget();
   int activeTab = 0;
   bool searchBusBy = true;
+  final PageController _swipePageController = PageController();
   List<StatefulWidget> navBarTabs = [
     const map(),
     const searchBus(),
@@ -174,7 +175,15 @@ class _passengerViewState extends State<passengerView> {
               ),
         body: Container(
           color: Colors.white,
-          child: navBarTabs[activeTab],
+          child: PageView(
+            controller: _swipePageController,
+            onPageChanged: (_newindex) {
+              setState(() {
+                activeTab = _newindex;
+              });
+            },
+            children: const [map(), searchBus(), mybus(), tickets()],
+          ),
         ),
         bottomNavigationBar: Row(
           children: [
@@ -250,7 +259,9 @@ class _passengerViewState extends State<passengerView> {
                       onClicked: () {
                         Navigator.pop(context);
                         setState(() {
-                          activeTab = 0;
+                          _swipePageController.animateToPage(0,
+                              duration: Duration(milliseconds: 500),
+                              curve: Curves.linearToEaseOut);
                         });
                       }),
                   SizedBox(
@@ -263,7 +274,9 @@ class _passengerViewState extends State<passengerView> {
                       onClicked: () {
                         Navigator.pop(context);
                         setState(() {
-                          activeTab = 1;
+                          _swipePageController.animateToPage(1,
+                              duration: Duration(milliseconds: 500),
+                              curve: Curves.linearToEaseOut);
                         });
                       }),
                   SizedBox(
@@ -276,7 +289,9 @@ class _passengerViewState extends State<passengerView> {
                       onClicked: () {
                         Navigator.pop(context);
                         setState(() {
-                          activeTab = 2;
+                          _swipePageController.animateToPage(2,
+                              duration: Duration(milliseconds: 500),
+                              curve: Curves.linearToEaseOut);
                         });
                       }),
                   SizedBox(
@@ -289,7 +304,9 @@ class _passengerViewState extends State<passengerView> {
                       onClicked: () {
                         Navigator.pop(context);
                         setState(() {
-                          activeTab = 3;
+                          _swipePageController.animateToPage(3,
+                              duration: Duration(milliseconds: 500),
+                              curve: Curves.linearToEaseOut);
                         });
                       }),
                   SizedBox(
@@ -432,7 +449,11 @@ class _passengerViewState extends State<passengerView> {
         ),
       ),
       onTap: () {
-        setState(() => activeTab = index);
+        setState(() {
+          _swipePageController.animateToPage(index,
+              duration: Duration(milliseconds: 500),
+              curve: Curves.linearToEaseOut);
+        });
       },
     );
   }

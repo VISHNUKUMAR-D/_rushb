@@ -95,7 +95,6 @@ class _passengerViewState extends State<passengerView> {
                                         width: size.width * 0.5,
                                         child: TextField(
                                           cursorColor: Colors.white24,
-                                          autofocus: true,
                                           style: GoogleFonts.lexend(
                                               color: Colors.white),
                                           decoration: InputDecoration(
@@ -185,13 +184,28 @@ class _passengerViewState extends State<passengerView> {
             children: const [map(), searchBus(), mybus(), tickets()],
           ),
         ),
-        bottomNavigationBar: Row(
-          children: [
-            customNavBar(size, MdiIcons.mapMarkerRadiusOutline, "MAP", 0),
-            customNavBar(size, Icons.search_outlined, "SEARCH BUS", 1),
-            customNavBar(size, MdiIcons.busSide, "MY BUS", 2),
-            customNavBar(size, MdiIcons.ticketPercentOutline, "TICKETS", 3)
-          ],
+        bottomNavigationBar: Container(
+          decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                  color: Color(0xffc0c0c0c0),
+                  spreadRadius: 0.5,
+                  blurRadius: size.width * 0.015,
+                  offset: Offset(0, -size.width * 0.005)),
+              BoxShadow(
+                  color: Colors.white, offset: Offset(-size.width * 0.015, 0)),
+              BoxShadow(
+                  color: Colors.white, offset: Offset(size.width * 0.0025, 0)),
+            ],
+          ),
+          child: Row(
+            children: [
+              customNavBar(size, MdiIcons.mapMarkerRadiusOutline, "MAP", 0),
+              customNavBar(size, Icons.search_outlined, "SEARCH BUS", 1),
+              customNavBar(size, MdiIcons.busSide, "MY BUS", 2),
+              customNavBar(size, MdiIcons.ticketPercentOutline, "TICKETS", 3)
+            ],
+          ),
         ));
   }
 
@@ -395,44 +409,32 @@ class _passengerViewState extends State<passengerView> {
         height: size.height * 0.065,
         decoration: isActive
             ? BoxDecoration(
-                boxShadow: [
-                    BoxShadow(
-                        color: Colors.grey.shade500,
-                        spreadRadius: 0.5,
-                        blurRadius: size.width * 0.015,
-                        offset: Offset(0, -size.width * 0.005)),
-                    BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(-size.width * 0.015, 0)),
-                    BoxShadow(
-                        color: Colors.white,
-                        offset: Offset(size.width * 0.0025, 0)),
-                  ],
                 border: Border(
-                  top: BorderSide(
-                      width: size.width * 0.0075,
-                      color: customWidget.getAppColor()),
-                ))
-            // gradient: LinearGradient(colors: [
-            //   customWidget.getAppColor().withOpacity(1),
-            //   customWidget.getAppColor().withOpacity(0.5),
-            //   customWidget.getAppColor().withOpacity(0.015),
-            // ], begin: Alignment.bottomCenter, end: Alignment.topCenter))
-            : BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.grey.shade500,
-                      spreadRadius: 0.5,
-                      blurRadius: size.width * 0.015,
-                      offset: Offset(0, -size.width * 0.005)),
-                  BoxShadow(
-                      color: Colors.white,
-                      offset: Offset(-size.width * 0.015, 0)),
-                  BoxShadow(
-                      color: Colors.white,
-                      offset: Offset(size.width * 0.0025, 0)),
-                ],
-              ),
+                top: BorderSide(
+                    width: size.width * 0.0075,
+                    color: customWidget.getAppColor()),
+              ))
+            : null,
+        // gradient: LinearGradient(colors: [
+        //   customWidget.getAppColor().withOpacity(1),
+        //   customWidget.getAppColor().withOpacity(0.5),
+        //   customWidget.getAppColor().withOpacity(0.015),
+        // ], begin: Alignment.bottomCenter, end: Alignment.topCenter))
+        // : BoxDecoration(
+        //     boxShadow: [
+        //       BoxShadow(
+        //           color: Colors.grey.shade500,
+        //           spreadRadius: 0.5,
+        //           blurRadius: size.width * 0.015,
+        //           offset: Offset(0, -size.width * 0.005)),
+        //       BoxShadow(
+        //           color: Colors.white,
+        //           offset: Offset(-size.width * 0.015, 0)),
+        //       BoxShadow(
+        //           color: Colors.white,
+        //           offset: Offset(size.width * 0.0025, 0)),
+        //     ],
+        //   ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
